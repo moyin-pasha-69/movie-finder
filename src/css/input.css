@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@layer components {
+  .nav-item {
+    @apply py-1 hover:text-[#00ffff] px-2 rounded-sm font-bold text-base text-white;
+  }
+
+  .side-bar-items {
+    @apply fixed right-0 top-20 bg-[#1A1A1A] w-full  flex flex-col py-2;
+  }
+  .side-bar-icons {
+    @apply fixed right-0 top-[220px] py-2  bg-[#1A1A1A] w-full  flex justify-center items-center gap-4;
+  }
+
+  .icons i {
+    @apply text-3xl text-white cursor-pointer;
+  }
+}

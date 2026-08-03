@@ -1,14 +1,27 @@
-import * as CONFIG from "./config.js";
+import * as Config from "./config.js";
 
-export async function getMovie() {
+export async function getHeroMovies() {
   try {
     const response = await fetch(
-      `${CONFIG.BASE_URL}trending/movie/day`,
-      CONFIG.OPTIONS,
+      `${Config.BASE_URL}trending/movie/day`,
+      Config.OPTIONS,
     );
 
     return response.json();
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function getSearchedMovie(movie) {
+  try {
+    const response = fetch(`${Config.BASE_URL}movie/${movie}`, Config.OPTIONS);
+    return (await response).json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function getImage(path) {
+  return `${Config.BASE_IMG_URL}/original/${path}`;
 }

@@ -15,4 +15,36 @@
   .icons i {
     @apply text-3xl text-white cursor-pointer;
   }
+
+  .hero-box {
+    @apply w-full min-h-[450px]  rounded-md flex flex-col sm:flex-row lg:gap-8 gap-6 mx-auto px-4 sm:px-8 sm:py-10 py-6 border border-[#3A3A3A] bg-center bg-cover bg-no-repeat relative;
+  }
+
+  .hero-poster {
+    @apply sm:min-w-[250px] h-[300px] lg:h-[340px] max-w-[250px] w-full mx-auto rounded-md bg-red-500 overflow-hidden;
+  }
+
+  .hero-details {
+    @apply text-white flex flex-col gap-4;
+  }
+
+  .hero-details .hero-top {
+    @apply flex justify-start items-center gap-4;
+  }
+
+  .hero-details .hero-buttons {
+    @apply flex justify-start items-center gap-2 text-[#00ffff] mb-4;
+  }
+
+  .hero-details .hero-buttons p {
+    @apply bg-[#2A2A3A] py-1 px-3 border border-[#4a4a4a] rounded-sm text-sm;
+  }
+
+  .hero-details .hero-trailer {
+    @apply flex flex-col lg:flex-row justify-start items-start  lg:items-center gap-4 text-black;
+  }
+
+  .hero-details .hero-trailer button {
+    @apply bg-[#00ffff] px-4 py-3 font-bold rounded-md hover:bg-[#00ff00] cursor-pointer;
+  }
 }

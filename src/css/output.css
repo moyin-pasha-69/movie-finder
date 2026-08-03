@@ -196,9 +196,6 @@
   .hidden {
     display: none;
   }
-  .h-1 {
-    height: var(--spacing);
-  }
   .h-full {
     height: 100%;
   }
@@ -256,9 +253,6 @@
   }
   .bg-\[\#2A2A3A\] {
     background-color: #2A2A3A;
-  }
-  .bg-\[\#e0e0e0\] {
-    background-color: #e0e0e0;
   }
   .px-1 {
     padding-inline: var(--spacing);
@@ -335,9 +329,6 @@
     }
   }
   @media (width >= 64rem) {
-    .lg\:block {
-      display: block;
-    }
     .lg\:flex {
       display: flex;
     }

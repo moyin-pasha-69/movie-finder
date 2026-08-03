@@ -14,3 +14,22 @@ export function openMenu() {
     navIcons.classList.remove("side-bar-icons");
   }
 }
+
+export function movieDuration(min) {
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+
+  return `${h}h ${m}m`;
+}
+
+export function getMovieGenre(movie) {
+  let genre = [];
+  for (const element in movie) {
+    genre.push(
+      movie[element].name === "Science Fiction"
+        ? "Sci-Fi"
+        : movie[element].name,
+    );
+  }
+  return genre;
+}

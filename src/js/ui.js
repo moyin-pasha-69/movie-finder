@@ -1,28 +1,30 @@
 import * as Api from "./api.js";
 import * as Utils from "./utils.js";
 import * as Config from "./config.js";
-const heroSection = document.querySelector(".hero-section");
+export const heroSection = document.querySelector(".hero-section");
+export const slides = document.querySelector(".slides");
 
-export async function renderHeroSection(data) {
-  data.forEach(async (element) => {
-    let movie = await Api.getSearchedMovie(element.id);
+export function renderHeroSection(data) {
+  data.forEach((element, index) => {
+    // let movie = await Api.getSearchedMovie(element.id);
     let poster = Api.getImage(element.poster_path);
     let backdrop = Api.getImage(element.backdrop_path);
-    let genre = Utils.getMovieGenre(movie.genres);
+    // let genre = Utils.getMovieGenre(movie.genres);
     let releaseDate = new Date(element.release_date).getFullYear();
+    let rating = element.vote_average.toFixed(1);
 
     let hero = document.createElement("div");
     hero.classList.add("hero-box");
     hero.style.backgroundImage = `url(${backdrop})`;
     hero.innerHTML = `
-       <div class="absolute bg-black/80 w-full h-full top-0 left-0 z-10"></div>
+    <div class="absolute bg-black/60 w-full h-full top-0 left-0 z-10"></div>
               <!-- poster -->
-          <div class="hero-poster z-50">
+          <div class="hero-poster z-30">
           <img class="w-full h-full object-fit" src="${poster}" alt="Hero Poster"/>
           </div>
 
           <!-- detail -->
-          <div class="hero-details z-50">
+          <div class="hero-details z-30">
             <!-- top -->
             <div class="hero-top">
               <p
@@ -31,9 +33,9 @@ export async function renderHeroSection(data) {
                 RELEASED ${releaseDate}
               </p>
               <p class="text-[#ffff00] font-bold lg:text-lg text-sm">
-                &starf; ${element.vote_average} / 10
+                &starf; ${rating} / 10
               </p>
-              <p class="text-[#e0e0e0] text-sm">${Utils.movieDuration(movie.runtime)}</p>
+              
             </div>
 
             <!-- title -->
@@ -44,16 +46,11 @@ export async function renderHeroSection(data) {
             </div>
 
             <!-- info -->
-            <p class="hero-info font-medium text-[#e0e0e0]">
+            <p class="hero-info font-medium text-[#e0e0e0] overflow-y-scroll h-20">
               ${element.overview}
             </p>
 
-            <!-- buttons -->
-            <div class="hero-buttons">
-              <p>${genre[0]}</p>
-              <p>${genre[1]}</p>
-              <p>${genre[2]}</p>
-            </div>
+            
 
             <!-- trailer -->
             <div class="hero-trailer">
@@ -66,6 +63,6 @@ export async function renderHeroSection(data) {
             </div>
           </div>
   `;
-    heroSection.appendChild(hero);
+    slides.appendChild(hero);
   });
 }

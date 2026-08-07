@@ -1,3 +1,5 @@
+import { slides } from "./ui.js";
+
 const navItems = document.querySelector(".nav-items");
 const navIcons = document.querySelector(".nav-icons");
 

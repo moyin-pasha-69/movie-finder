@@ -16,10 +16,23 @@
     @apply text-3xl text-white cursor-pointer;
   }
 
-  .hero-box {
-    @apply w-full min-h-[450px]  rounded-md flex flex-col sm:flex-row lg:gap-8 gap-6 mx-auto px-4 sm:px-8 sm:py-10 py-6 border border-[#3A3A3A] bg-center bg-cover bg-no-repeat relative;
+  .slides {
+    @apply w-full mx-auto overflow-hidden  rounded-md h-[700px] sm:h-[75vh] relative;
   }
 
+  .hero-box {
+    @apply w-full h-full  rounded-md flex flex-col sm:flex-row lg:gap-8 gap-6 mx-auto px-4 sm:px-8 sm:py-10 py-6 border border-[#3A3A3A] bg-center bg-cover bg-no-repeat absolute left-0 top-0 overflow-hidden duration-700;
+  }
+
+  .dot-container {
+    @apply inline-block absolute bottom-6 left-[38%] sm:left-[48%] -translate-[50%_50%] px-2 py-1 rounded-md;
+  }
+  .dots {
+    @apply w-[12px] h-[12px] mr-[5px] rounded-full border border-[#00ffff] inline-block cursor-pointer bg-[#00FFFF];
+  }
+  .selected-dot {
+    @apply duration-300 scale-[1.4] bg-[#00FF3E] border-[#00ff3e];
+  }
   .hero-poster {
     @apply sm:min-w-[250px] h-[300px] lg:h-[340px] max-w-[250px] w-full mx-auto rounded-md bg-red-500 overflow-hidden;
   }

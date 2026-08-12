@@ -15,8 +15,11 @@ export async function getHeroMovies() {
 
 export async function getSearchedMovie(movie) {
   try {
-    const response = fetch(`${Config.BASE_URL}movie/${movie}`, Config.OPTIONS);
-    return (await response).json();
+    const response = await fetch(
+      `${Config.BASE_URL}movie/${movie}`,
+      Config.OPTIONS,
+    );
+    return response.json();
   } catch (error) {
     console.log(error);
   }

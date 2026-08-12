@@ -9,6 +9,8 @@ const slideOne = document.querySelector(".slide1");
 const slideTwo = document.querySelector(".slide2");
 const slideThree = document.querySelector(".slide3");
 const slideFour = document.querySelector(".slide4");
+const swiperContainer = document.querySelector(".swiper");
+
 let slide = 0;
 
 menuBar.addEventListener("click", Utils.openMenu);
@@ -115,5 +117,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else if (e.key === "ArrowLeft") {
       prevHeroBox();
     }
+  });
+
+  // trending section
+  let trendingMovies = data.results.slice(0, 10);
+  const details = await Promise.all(
+    trendingMovies.map((movie) => Api.getSearchedMovie(movie.id)),
+  );
+  Ui.renderTrendingMovies(details);
+  swiperContainer.style.setProperty("--swiper-navigation-color", "#00ffff");
+  let swiperCard = new Swiper(".slider-wrapper", {
+    spaceBetween: 10,
+    grabCursor: true,
+    loop: true,
+
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      640: {
+        slidesPerView: 2,
+      },
+
+      1024: {
+        slidesPerView: 3,
+      },
+
+      1280: {
+        slidesPerView: 4,
+      },
+    },
+
+    direction: "horizontal",
+    mousewheel: {
+      forceToAxis: true,
+    },
+
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+      pageUpDown: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
   });
 });

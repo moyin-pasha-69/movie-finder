@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Finder</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./src/css/customStyle.css" />
     <link rel="stylesheet" href="./src/css/output.css" />
     <script
@@ -73,17 +77,17 @@
       </div>
     </header>
     <main
-      class="max-w-[1440px] w-full mx-auto px-4 md:px-8 lg:px-16 h-full relative"
+      class="max-w-[1440px] w-full mx-auto px-2 md:px-8 lg:px-12 h-full relative"
     >
       <!-- hero Section -->
-      <section id="home" class="hero-section w-full py-4 h-full">
+      <section id="home" class="hero-section w-full py-4 h-full relative mb-10">
         <div class="slides"></div>
         <!-- <div class="hero-box"></div> -->
 
-        <div class="action-btn prev absolute top-52 lg:left-6 left-0 z-40">
+        <div class="action-btn prev absolute top-48 lg:-left-10 -left-2 z-40">
           <i class="fa-solid fa-arrow-left prev"></i>
         </div>
-        <div class="next action-btn absolute top-52 lg:right-6 right-0 z-40">
+        <div class="next action-btn absolute top-48 lg:-right-10 -right-2 z-40">
           <i class="fa-solid fa-arrow-right"></i>
         </div>
 
@@ -95,7 +99,74 @@
         </div>
       </section>
 
+      <!-- trending Section -->
+      <section id="trending" class="trending-section w-full relative">
+        <h2
+          class="text-[#ffff00] font-extrabold text-2xl title-line before:bg-[#00ff00] mb-6"
+        >
+          🔥 Trending <span class="text-white">Movies</span>
+        </h2>
+        <div class="w-full trending-card swiper">
+          <div class="slider-wrapper overflow-hidden w-full mb-10">
+            <div class="swiper-wrapper"></div>
+          </div>
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        <!-- <div class="w-full relative mb-10">
+          <h2
+            class="text-[#ffff00] font-extrabold text-2xl title-line before:bg-[#00ff00] mb-6"
+          >
+            🔥 Trending <span class="text-white">Movies</span>
+          </h2>
+
+          <div
+            class="card-box bg-[#1A1A1A] w-[300px] h-[500px] group border-2 border-[#4a4a4a] rounded-xl overflow-hidden duration-150 ease-linear hover:border-[#00ffff]"
+          >
+            <div
+              class="w-full overflow-hidden h-[70%] border-[#4a4a4a] border-b"
+            >
+               card image 
+              <img
+                src="https://image.tmdb.org/t/p//original//iPOn6DinuVyLY17YM9mKuPofV08.jpg"
+                class="w-full group-hover:scale-[1.1] duration-300 ease-linear h-full object-center"
+              />
+            </div>
+
+               //card details 
+            <div class="px-6 text-white pt-4">
+              <h2
+                class="text-lg group-hover:text-[#00ffff] duration-300 ease-linear mb-2 font-bold"
+              >
+                Spider-Man: Brand New Day
+              </h2>
+
+              <p class="text-sm h-10 overflow-y-scroll text-gray-400 mb-4">
+                Fighting crime full-time as Spider-Man in a world that doesn't
+                remember him—and the pressure of seeing his old friends move on
+                without him—sparks a change in Peter Parker he may not have the
+                power to control. But that transformation might also be the only
+                thing that can stop a shocking new threat to the city and those
+                he loves - a powerful villain no one can even see.
+              </p>
+
+              <hr class="text-[#4a4a4a] rounded-2xl mb-4" />
+              <div class="flex justify-between items-center text-xs">
+                <p class="text-[#4a4a4a]">Sci-Fi/Action</p>
+                <a href="#" class="text-[#00ffff] font-bold hover:underline">
+                  Details &rarr;</a
+                >
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
     <script type="module" src="./src/js/app.js"></script>
   </body>
 </html>

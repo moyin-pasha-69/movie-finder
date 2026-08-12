@@ -60,4 +60,8 @@
   .hero-details .hero-trailer button {
     @apply bg-[#00ffff] px-4 py-3 font-bold rounded-md hover:bg-[#00ff00] cursor-pointer;
   }
+
+  .title-line {
+    @apply before:content-[''] before:top-0.5 before:-left-2 before:absolute before:h-8 before:w-2 before:rounded-xs;
+  }
 }

@@ -55,7 +55,7 @@ export function renderHeroSection(data) {
 
             <!-- trailer -->
             <div class="hero-trailer">
-              <button>&#9655; Watch Trailer</button>
+              <a href="../movie.html?id=${element.id}">&#9655; Watch Trailer</a>
               <button
                 class="bg-[#2A2A3A] hover:outline-[#00ffff] hover:outline text-white"
               >
@@ -110,7 +110,7 @@ export function renderTrendingMovies(movie) {
               <hr class="text-[#4a4a4a] rounded-2xl mb-3" />
               <div class="flex justify-between items-center text-sm">
                 <p class="text-gray-500">${genre[0]} / ${genre[1]}</p>
-                <a href="#" class="text-[#00ffff] font-bold hover:underline">
+                <a href="../movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
                   Details &rarr;</a
                 >
               </div>

@@ -247,6 +247,12 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-20 {
+    margin-top: calc(var(--spacing) * 20);
+  }
+  .mr-4 {
+    margin-right: calc(var(--spacing) * 4);
+  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -277,20 +283,11 @@
   .h-20 {
     height: calc(var(--spacing) * 20);
   }
-  .h-\[70\%\] {
-    height: 70%;
-  }
   .h-\[320px\] {
     height: 320px;
   }
-  .h-\[500px\] {
-    height: 500px;
-  }
   .h-full {
     height: 100%;
-  }
-  .w-\[300px\] {
-    width: 300px;
   }
   .w-full {
     width: 100%;
@@ -433,6 +430,9 @@
   .pl-2 {
     padding-left: calc(var(--spacing) * 2);
   }
+  .text-center {
+    text-align: center;
+  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
@@ -552,6 +552,10 @@
     }
     .sm\:py-2 {
       padding-block: calc(var(--spacing) * 2);
+    }
+    .sm\:text-3xl {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
     .sm\:text-base {
       font-size: var(--text-base);
@@ -797,6 +801,20 @@
       align-items: center;
     }
   }
+  .hero-details .hero-trailer a {
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    background-color: #00ffff;
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: calc(var(--spacing) * 3);
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+    &:hover {
+      @media (hover: hover) {
+        background-color: #00ff00;
+      }
+    }
+  }
   .hero-details .hero-trailer button {
     cursor: pointer;
     border-radius: var(--radius-md);
@@ -820,6 +838,29 @@
     border-radius: var(--radius-xs);
     --tw-content: '';
     content: var(--tw-content);
+  }
+  .genre {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing);
+  }
+  .movie-genre-item {
+    cursor: default;
+    border-radius: var(--radius-sm);
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: #3A3A3A;
+    background-color: #2A2A3A;
+    padding-inline: calc(var(--spacing) * 2);
+    padding-block: var(--spacing);
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+    color: #00ffff;
+    &:hover {
+      @media (hover: hover) {
+        color: #00ff00;
+      }
+    }
   }
 }
 @property --tw-rotate-x {

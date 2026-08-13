@@ -277,20 +277,11 @@
   .h-20 {
     height: calc(var(--spacing) * 20);
   }
-  .h-\[70\%\] {
-    height: 70%;
-  }
   .h-\[320px\] {
     height: 320px;
   }
-  .h-\[500px\] {
-    height: 500px;
-  }
   .h-full {
     height: 100%;
-  }
-  .w-\[300px\] {
-    width: 300px;
   }
   .w-full {
     width: 100%;

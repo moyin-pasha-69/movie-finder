@@ -81,3 +81,28 @@ genre.forEach((gen) => {
   g.innerHTML = `${gen}`;
   genreBox.appendChild(g);
 });
+
+//cast details
+let castItems = document.querySelector(".cast-items");
+const castInfo = await Api.getMovieCast(data.id);
+let d = castInfo.cast.slice(0, 10);
+console.log(d);
+
+d.forEach((element) => {
+  let cast = document.createElement("div");
+  cast.setAttribute("class", "flex flex-col items-center ");
+  cast.innerHTML = `
+            <a>
+            <img
+              src="${Api.getImage(element.profile_path)}"
+              alt=""
+              class="object-center w-40 h-40 rounded-full"
+            />
+            </a>
+            <div class="text-center">
+            <a><h3 class="text-[#ffffff] text-sm font-bold">${element.name}</h3></a>
+              <h4 class="text-[#e0e0e0] text-xs">${element.character}</h4>
+            </div>
+  `;
+  castItems.appendChild(cast);
+});

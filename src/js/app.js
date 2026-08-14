@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     atSpecificHero(3);
   });
 
-  setInterval(nextHeroBox, 5000);
+  setInterval(nextHeroBox, 10000);
   Ui.renderHeroSection(heroMovies);
   const heroBox = document.querySelectorAll(".hero-box");
 

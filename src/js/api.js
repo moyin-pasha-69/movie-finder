@@ -53,3 +53,16 @@ export async function getRelatedMovie(id) {
     console.log(error);
   }
 }
+
+export async function getVideo(id) {
+  try {
+    const response = await fetch(
+      `${Config.BASE_URL}movie/${id}/videos`,
+      Config.OPTIONS,
+    );
+
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}

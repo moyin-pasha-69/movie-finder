@@ -55,7 +55,7 @@ export function renderHeroSection(data) {
 
             <!-- trailer -->
             <div class="hero-trailer">
-              <a href="../movie.html?id=${element.id}">&#9655; Watch Trailer</a>
+              <a href="../trailer.html?id=${element.id}">&#9655; Watch Trailer</a>
               <button
                 class="bg-[#2A2A3A] hover:outline-[#00ffff] hover:outline text-white"
               >

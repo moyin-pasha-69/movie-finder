@@ -6,6 +6,9 @@ const movieId = params.get("id");
 const data = await Api.getSearchedMovie(movieId);
 const headMovieTitle = document.querySelector(".head-movie-title");
 const detailBox = document.querySelector("#detail-page .slides");
+const pageTitle = document.querySelector("title");
+pageTitle.innerHTML = `${data.original_title} - Detail page`;
+
 // console.log(data);
 
 // head title
@@ -63,7 +66,7 @@ hero.innerHTML = `
 
             <!-- trailer -->
             <div class="hero-trailer">
-              <button>&#9655; Watch Trailer</button>
+              <a href="../trailer.html?id=${data.id}">&#9655; Watch Trailer</a>
               <button
                 class="bg-[#2A2A3A] hover:outline-[#00ffff] hover:outline text-white"
               >
@@ -114,8 +117,6 @@ const relatedMoviePseudoData = await Api.getRelatedMovie(data.id);
 const relatedMovieData = await Promise.all(
   relatedMoviePseudoData.results.map((movie) => Api.getSearchedMovie(movie.id)),
 );
-
-console.log(relatedMovieData);
 
 relatedMovieData.forEach((details) => {
   let overview = details.overview;
@@ -206,3 +207,5 @@ let swiperCard = new Swiper(".slider-wrapper", {
     prevEl: ".swiper-button-prev",
   },
 });
+
+//trailer

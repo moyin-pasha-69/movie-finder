@@ -17,17 +17,25 @@ headMovieTitle.appendChild(h2);
 //trailer section
 const main = document.querySelector("main");
 const videos = await Api.getVideo(movieId);
-console.log(videos);
-
-const trailer = videos.results.find(
-  (video) =>
-    video.site === "YouTube" &&
-    video.type === "Trailer" &&
-    video.official === true,
-);
+let isEmpty = videos.results.length === 0;
 const trailerBox = document.createElement("div");
-trailerBox.className = "mt-16 w-[90%] sm:h-[80%] h-[70%]";
-trailerBox.innerHTML = `
+if (isEmpty) {
+  trailerBox.className =
+    "mt-16 w-[90%] sm:h-[80%] h-[70%] text-[#4a4a4a] flex justify-center items-center text-2xl sm:text-4xl font-bold";
+  trailerBox.innerHTML = "Trailer Not Available";
+} else {
+  const trailer = videos.results.find(
+    (video) =>
+      video.site === "YouTube" &&
+      video.type === "Trailer" &&
+      video.official === true,
+  );
+  console.log(trailer);
+
+  let trailerData = trailer.key === " ";
+
+  trailerBox.className = "mt-16 w-[90%] sm:h-[80%] h-[70%]";
+  trailerBox.innerHTML = `
        <iframe
         src="https://www.youtube.com/embed/${trailer.key}"
         frameborder="0"
@@ -35,6 +43,6 @@ trailerBox.innerHTML = `
         class="w-full h-full"
       ></iframe>
 `;
-main.appendChild(trailerBox);
+}
 
-console.log(trailer);
+main.appendChild(trailerBox);

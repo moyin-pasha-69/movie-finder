@@ -19,10 +19,15 @@ h2.innerHTML = `${data.original_title}`;
 headMovieTitle.appendChild(h2);
 
 //movie card
+console.log(data);
+
 let backdrop = Api.getImage(data.backdrop_path);
 let poster = Api.getImage(data.poster_path);
 let releaseDate = new Date(data.release_date).getFullYear();
 let rating = data.vote_average.toFixed(1);
+let ratingData = rating === "0.0" ? "Not released" : `&starf; ${rating} / 10`;
+
+let status = data.status.toUpperCase();
 let hero = document.createElement("div");
 hero.classList.add("hero-box");
 hero.style.backgroundImage = `url(${backdrop})`;
@@ -40,10 +45,10 @@ hero.innerHTML = `
               <p
                 class="bg-[#00ff00] text-[#0a0a0a] font-extrabold rounded-3xl lg:py-1 lg:px-2 lg:text-xs py-0.5 px-2 text-[12px]"
               >
-                RELEASED ${releaseDate}
+                ${status} ${releaseDate}
               </p>
               <p class="text-[#ffff00] font-bold lg:text-lg text-sm">
-                &starf; ${rating} / 10
+                ${ratingData}
               </p>
 
               <p class="text-sm text-[#e0e0e0] font-medium">${Utils.movieDuration(data.runtime)}</p>

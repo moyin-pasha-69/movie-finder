@@ -41,3 +41,15 @@ export async function getMovieCast(id) {
     console.log(error);
   }
 }
+
+export async function getRelatedMovie(id) {
+  try {
+    const response = await fetch(
+      `${Config.BASE_URL}movie/${id}/similar`,
+      Config.OPTIONS,
+    );
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}

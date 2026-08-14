@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Detail page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./src/css/output.css" />
     <link rel="stylesheet" href="./src/css/customStyle.css" />
     <script
@@ -80,9 +84,23 @@
         >
           Related <span class="text-white">Movies</span>
         </h2>
+
+        <div class="w-full trending-card swiper">
+          <div class="slider-wrapper overflow-hidden w-full mb-10">
+            <div class="swiper-wrapper related-movie-card"></div>
+          </div>
+          <div class="swiper-pagination"></div>
+
+          <!-- pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!--  navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
       </section>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script type="module" src="./src/js/movie.js"></script>
   </body>
 </html>

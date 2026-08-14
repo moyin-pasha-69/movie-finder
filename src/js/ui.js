@@ -76,7 +76,7 @@ export function renderTrendingMovies(movie) {
     }
     let genre = Utils.getMovieGenre(details.genres);
 
-    let releaseDate = new Date("2026-06-24").getFullYear();
+    let releaseDate = new Date(details.release_date).getFullYear();
     let rating = details.vote_average.toFixed(1);
 
     let card = document.createElement("div");

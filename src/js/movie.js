@@ -6,7 +6,7 @@ const movieId = params.get("id");
 const data = await Api.getSearchedMovie(movieId);
 const headMovieTitle = document.querySelector(".head-movie-title");
 const detailBox = document.querySelector("#detail-page .slides");
-console.log(data);
+// console.log(data);
 
 // head title
 const h2 = document.createElement("h2");
@@ -86,7 +86,7 @@ genre.forEach((gen) => {
 let castItems = document.querySelector(".cast-items");
 const castInfo = await Api.getMovieCast(data.id);
 let d = castInfo.cast.slice(0, 10);
-console.log(d);
+// console.log(d);
 
 d.forEach((element) => {
   let cast = document.createElement("div");
@@ -105,4 +105,104 @@ d.forEach((element) => {
             </div>
   `;
   castItems.appendChild(cast);
+});
+
+//Related movie section
+const relatedMovieCard = document.querySelector(".related-movie-card");
+const relatedMoviePseudoData = await Api.getRelatedMovie(data.id);
+
+const relatedMovieData = await Promise.all(
+  relatedMoviePseudoData.results.map((movie) => Api.getSearchedMovie(movie.id)),
+);
+
+console.log(relatedMovieData);
+
+relatedMovieData.forEach((details) => {
+  let overview = details.overview;
+  if (overview === "") {
+    overview = "This movie not have any overview";
+  }
+  let genre = Utils.getMovieGenre(details.genres);
+
+  let releaseDate = new Date(details.release_date).getFullYear();
+  let rating = details.vote_average.toFixed(1);
+
+  let card = document.createElement("div");
+  card.setAttribute("class", "swiper-slide");
+
+  card.innerHTML = `
+        <div class="card-box bg-[#1A1A1A] w-full  group border-2 border-[#4a4a4a] rounded-xl overflow-hidden duration-150 ease-linear hover:border-[#00ffff]">
+              <div class="overflow-hidden border-[#4a4a4a] border-b w-full h-[320px] relative">
+                <!-- card image -->
+                <img
+                  src= "${Api.getImage(details.poster_path)}"
+                  class="w-full group-hover:scale-[1.1] duration-300 ease-linear h-full object-center"
+                />
+                <div class="absolute top-2 right-1 bg-[#0D0D0F] px-1 py-0.5 rounded-md border border-[#4A4A4A]"><span class="text-[#ffff00] text-sm font-bold">
+                &starf; ${rating}/10
+                </span></div>
+              </div>
+  
+              <!-- card details -->
+              <div class="px-6 text-white pt-4 pb-4 relative">
+                <h2 class="text-lg truncate group-hover:text-[#00ffff] duration-300 ease-linear mb-2 font-bold cursor-default" title="${details.title}">
+                  ${details.title}
+                </h2>
+  
+                <span class="absolute top-0.5 right-3 text-[#00ff00] font-bold">${releaseDate}</span>
+  
+                <p class="text-sm h-10  overflow-y-scroll text-gray-400 mb-4">
+                 ${overview}
+                </p>
+  
+                <hr class="text-[#4a4a4a] rounded-2xl mb-3" />
+                <div class="flex justify-between items-center text-sm">
+                  <p class="text-gray-500">${genre[0]} / ${genre[1]}</p>
+                  <a href="../movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
+                    Details &rarr;</a
+                  >
+                </div>
+              </div>
+            </div>
+    
+    `;
+  relatedMovieCard.appendChild(card);
+});
+
+let swiperCard = new Swiper(".slider-wrapper", {
+  slidesPerView: 4,
+  spaceBetween: 10,
+  grabCursor: true,
+
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    640: {
+      slidesPerView: 2,
+    },
+
+    1024: {
+      slidesPerView: 3,
+    },
+
+    1280: {
+      slidesPerView: 4,
+    },
+  },
+
+  direction: "horizontal",
+  mousewheel: {
+    forceToAxis: true,
+  },
+
+  keyboard: {
+    enabled: true,
+    onlyInViewport: true,
+    pageUpDown: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
 });

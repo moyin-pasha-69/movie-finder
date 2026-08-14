@@ -57,11 +57,21 @@
     @apply flex flex-col lg:flex-row justify-start items-start  lg:items-center gap-4 text-black;
   }
 
+  .hero-details .hero-trailer a {
+    @apply bg-[#00ffff] px-4 py-3 font-bold rounded-md hover:bg-[#00ff00] cursor-pointer;
+  }
   .hero-details .hero-trailer button {
     @apply bg-[#00ffff] px-4 py-3 font-bold rounded-md hover:bg-[#00ff00] cursor-pointer;
   }
 
   .title-line {
     @apply before:content-[''] before:top-0.5 before:-left-2 before:absolute before:h-8 before:w-2 before:rounded-xs;
+  }
+
+  .genre {
+    @apply flex gap-1 flex-wrap;
+  }
+  .movie-genre-item {
+    @apply border border-[#3A3A3A] px-2 py-1 rounded-sm bg-[#2A2A3A] text-xs text-[#00ffff] cursor-default hover:text-[#00ff00];
   }
 }

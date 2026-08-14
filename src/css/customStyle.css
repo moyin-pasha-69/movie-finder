@@ -46,4 +46,33 @@
   background: #00ff00;
 }
 
-/* swiper */
+/*page smooth transition*/
+@view-transition {
+  navigation: auto;
+}
+
+main {
+  view-transition-name: main-page;
+}
+
+::view-transition-group(main-page) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-old(main-page) {
+  animation-name: slide-out;
+}
+@keyframes slide-out {
+  to {
+    translate: -100vw;
+  }
+}
+
+::view-transition-new(main-page) {
+  animation-name: slide-in;
+}
+@keyframes slide-in {
+  from {
+    translate: 100vw;
+  }
+}

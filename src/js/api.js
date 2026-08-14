@@ -28,3 +28,41 @@ export async function getSearchedMovie(movie) {
 export function getImage(path) {
   return `${Config.BASE_IMG_URL}/original/${path}`;
 }
+
+export async function getMovieCast(id) {
+  try {
+    const response = await fetch(
+      `${Config.BASE_URL}movie/${id}/credits`,
+      Config.OPTIONS,
+    );
+    return response.json();
+  } catch (error) {
+    d;
+    console.log(error);
+  }
+}
+
+export async function getRelatedMovie(id) {
+  try {
+    const response = await fetch(
+      `${Config.BASE_URL}movie/${id}/similar`,
+      Config.OPTIONS,
+    );
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getVideo(id) {
+  try {
+    const response = await fetch(
+      `${Config.BASE_URL}movie/${id}/videos`,
+      Config.OPTIONS,
+    );
+
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}

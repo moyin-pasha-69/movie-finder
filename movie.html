@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Detail page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/output.css" />
+    <link rel="stylesheet" href="./src/css/customStyle.css" />
+    <script
+      src="https://kit.fontawesome.com/cccffbd662.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-[#0A0A0A]">
+    <header class="w-full bg-[#2A2A3A] fixed top-0 z-50 h-20">
+      <div
+        class="header-item flex justify-between items-center px-2 sm:px-4 lg:px-8 py-4 max-w-[1440px] w-full mx-auto z-50"
+      >
+        <!-- title -->
+        <h1 class="text-[#00ffff] font-extrabold sm:text-xl text-sm mr-4">
+          MOVIE <span class="text-[#00ff00]">FINDER</span>
+        </h1>
+
+        <div
+          class="head-movie-title text-[#e0e0e0] font-extrabold text-sm sm:text-3xl lg:text-4xl w-full mx-auto text-center truncate"
+        ></div>
+        <!-- icons -->
+        <div
+          class="icons nav-icons flex ml-4 gap-4 justify-center items-center"
+        >
+          <div class="toggle icon">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+          </div>
+          <div class="user icon">
+            <i class="fa-solid fa-circle-user"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="max-w-[1440px] w-full mx-auto px-4 md:px-8 lg:px-12 h-full relative"
+    >
+      <!--movie detail box -->
+      <section
+        id="detail-page"
+        class="hero-section w-full py-4 h-full relative mb-10 mt-20"
+      >
+        <div class="slides"></div>
+      </section>
+
+      <!-- cast detail section -->
+      <section class="w-full relative mb-10">
+        <h2
+          class="text-[#ffff00] font-extrabold text-2xl title-line before:bg-[#00ff00] ml-2 mb-6"
+        >
+          Movie <span class="text-white">Cast</span>
+        </h2>
+        <div
+          class="w-full px-4 cast-items grid gap-4 grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+        >
+          <!-- <div class="flex-col flex gap-2 items-center">
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BYzU3NWRhMjgtNmNmMS00YjQ1LWIyYzgtYzdkYjRjNWEzM2E3XkEyXkFqcGc@._V1_QL75_UX280_CR0,24,280,280_.jpg"
+              alt=""
+              class="object-center w-36 h-36 rounded-full"
+            />
+            <div class="text-center">
+              <h3 class="text-[#ffffff] text-sm font-bold">Tom Holland</h3>
+              <h4 class="text-[#e0e0e0] text-xs">Peter Parker</h4>
+            </div>
+          </div> -->
+        </div>
+      </section>
+
+      <!-- related movie section -->
+      <section class="w-full relative mb-10">
+        <h2
+          class="text-[#ffff00] font-extrabold text-2xl title-line before:bg-[#00ff00] ml-2 mb-6"
+        >
+          Related <span class="text-white">Movies</span>
+        </h2>
+
+        <div class="w-full trending-card swiper">
+          <div class="slider-wrapper overflow-hidden w-full mb-10">
+            <div class="swiper-wrapper related-movie-card"></div>
+          </div>
+          <div class="swiper-pagination"></div>
+
+          <!-- pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!--  navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script type="module" src="./src/js/movie.js"></script>
+  </body>
+</html>

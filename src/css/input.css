@@ -74,4 +74,15 @@
   .movie-genre-item {
     @apply border border-[#3A3A3A] px-2 py-1 rounded-sm bg-[#2A2A3A] text-xs text-[#00ffff] cursor-default hover:text-[#00ff00];
   }
+
+  .genre-card-section {
+    @apply flex justify-center items-center flex-col gap-4 sm:grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 md:gap-10 lg:gap-8 xl:gap-6;
+  }
+
+  .genre-card-section .genre-card {
+    @apply w-[200px] h-[250px] rounded-md bg-[#1a1a1a] border border-[#4a4a4a] cursor-pointer flex flex-col justify-center items-center font-bold text-[#e0e0e0] text-xl relative overflow-hidden hover:bg-black/40;
+  }
+  .genre-card-section .genre-card-overlay {
+    @apply absolute w-full h-full;
+  }
 }

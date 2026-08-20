@@ -66,3 +66,15 @@ export async function getVideo(id) {
     console.log(error);
   }
 }
+
+export async function getMovieByGenre(id, page) {
+  try {
+    const response = await fetch(
+      `${Config.BASE_URL}discover/movie?with_genres=${id}&page=${page}`,
+      Config.OPTIONS,
+    );
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}

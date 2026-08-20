@@ -37,6 +37,7 @@
     --radius-xs: 0.125rem;
     --radius-sm: 0.25rem;
     --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
@@ -202,6 +203,9 @@
   .relative {
     position: relative;
   }
+  .inset-0 {
+    inset: 0px;
+  }
   .top-0 {
     top: 0px;
   }
@@ -228,6 +232,9 @@
   }
   .left-0 {
     left: 0px;
+  }
+  .z-0 {
+    z-index: 0;
   }
   .z-10 {
     z-index: 10;
@@ -334,6 +341,9 @@
   .cursor-default {
     cursor: default;
   }
+  .cursor-grab {
+    cursor: grab;
+  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -430,6 +440,12 @@
   .bg-\[\#2A2A3A\] {
     background-color: #2A2A3A;
   }
+  .bg-black\/50 {
+    background-color: color-mix(in srgb, #000 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
+    }
+  }
   .bg-black\/60 {
     background-color: color-mix(in srgb, #000 60%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -463,6 +479,9 @@
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
   }
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
+  }
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
   }
@@ -478,6 +497,10 @@
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
   .text-lg {
     font-size: var(--text-lg);
@@ -542,6 +565,12 @@
   .uppercase {
     text-transform: uppercase;
   }
+  .decoration-1 {
+    text-decoration-thickness: 1px;
+  }
+  .underline-offset-2 {
+    text-underline-offset: 2px;
+  }
   .duration-150 {
     --tw-duration: 150ms;
     transition-duration: 150ms;
@@ -559,8 +588,19 @@
     outline-style: none;
   }
   @media (hover: hover) {
+    .group-hover\:flex:is(:where(.group):hover *) {
+      display: flex;
+    }
     .group-hover\:scale-\[1\.1\]:is(:where(.group):hover *) {
       scale: 1.1;
+    }
+    .group-hover\:bg-black\/80:is(:where(.group):hover *) {
+      background-color: color-mix(in srgb, #000 80%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .group-hover\:bg-black\/80:is(:where(.group):hover *) {
+        background-color: color-mix(in oklab, var(--color-black) 80%, transparent);
+      }
     }
     .group-hover\:text-\[\#00ffff\]:is(:where(.group):hover *) {
       color: #00ffff;
@@ -924,6 +964,140 @@
         color: #00ff00;
       }
     }
+  }
+  .genre-card-section {
+    margin-bottom: calc(var(--spacing) * 10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 4);
+    @media (width >= 40rem) {
+      display: grid;
+    }
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (width >= 48rem) {
+      gap: calc(var(--spacing) * 10);
+    }
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 8);
+    }
+    @media (width >= 80rem) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+    @media (width >= 80rem) {
+      gap: calc(var(--spacing) * 6);
+    }
+  }
+  .genre-card-section .genre-card {
+    position: relative;
+    display: flex;
+    height: 250px;
+    width: 200px;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: #4a4a4a;
+    background-color: #1a1a1a;
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+    color: #e0e0e0;
+  }
+  .genre-card-section .genre-card-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  .genre-movies-section {
+    margin-bottom: calc(var(--spacing) * 10);
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: calc(var(--spacing) * 4);
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (width >= 80rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .genre-page-pagination-section {
+    margin-bottom: calc(var(--spacing) * 10);
+    border-radius: var(--radius-lg);
+    background-color: #2A2A2A;
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .genre-page-pagination-section .next-prev-btns {
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    background-color: #3a3a3a;
+    padding: calc(var(--spacing) * 2);
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+    &:hover {
+      @media (hover: hover) {
+        background-color: #4a4a4a;
+      }
+    }
+  }
+  .genre-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #e0e0e0;
+  }
+  .pagination-number {
+    margin-inline: calc(var(--spacing) * 4);
+    display: flex;
+    overflow-x: scroll;
+  }
+  .pagination-number .normal-pages {
+    margin-inline: var(--spacing);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    background-color: #3a3a3a;
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: var(--spacing);
+    &:hover {
+      @media (hover: hover) {
+        background-color: #4a4a4a;
+      }
+    }
+  }
+  .selected-page {
+    margin-inline: var(--spacing);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    background-color: #e0e0e0;
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: var(--spacing);
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+    color: #2a2a2a;
+  }
+  .disable-btn {
+    cursor: no-drop;
+    border-radius: var(--radius-md);
+    background-color: #3a3a3a;
+    padding: calc(var(--spacing) * 2);
+    color: #2a2a2a;
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
   }
 }
 @property --tw-rotate-x {

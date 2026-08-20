@@ -1,4 +1,5 @@
 import { slides } from "./ui.js";
+import * as Storage from "./storage.js";
 
 const navItems = document.querySelector(".nav-items");
 const navIcons = document.querySelector(".nav-icons");
@@ -33,5 +34,15 @@ export function getMovieGenre(movie) {
         : movie[element].name,
     );
   }
+  if (genre.length === 0) {
+    genre[0] = "Not Set";
+    genre[1] = "Not Set";
+  }
   return genre;
+}
+
+export function getMovieGenreTitle(id) {
+  const genre = Storage.MovieGenreList.find((element) => id == element.id);
+
+  return genre?.title;
 }

@@ -67,10 +67,10 @@ export async function getVideo(id) {
   }
 }
 
-export async function getMovieByGenre(id) {
+export async function getMovieByGenre(id, page) {
   try {
     const response = await fetch(
-      `${Config.BASE_URL}discover/movie?with_genres=${id}`,
+      `${Config.BASE_URL}discover/movie?with_genres=${id}&page=${page}`,
       Config.OPTIONS,
     );
     return response.json();

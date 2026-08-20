@@ -232,6 +232,9 @@
   .left-0 {
     left: 0px;
   }
+  .z-0 {
+    z-index: 0;
+  }
   .z-10 {
     z-index: 10;
   }
@@ -289,9 +292,6 @@
   .hidden {
     display: none;
   }
-  .table {
-    display: table;
-  }
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
@@ -334,9 +334,6 @@
   .max-w-md {
     max-width: var(--container-md);
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
@@ -346,17 +343,11 @@
   .cursor-pointer {
     cursor: pointer;
   }
-  .resize {
-    resize: both;
-  }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .flex-col {
     flex-direction: column;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
   }
   .items-center {
     align-items: center;
@@ -445,20 +436,17 @@
   .bg-\[\#2A2A3A\] {
     background-color: #2A2A3A;
   }
-  .bg-black {
-    background-color: var(--color-black);
+  .bg-black\/50 {
+    background-color: color-mix(in srgb, #000 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
+    }
   }
   .bg-black\/60 {
     background-color: color-mix(in srgb, #000 60%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-black) 60%, transparent);
     }
-  }
-  .bg-\[url\(\.\.\/assets\/genre-images\/action-img\.png\)\] {
-    background-image: url(../assets/genre-images/action-img.png);
-  }
-  .bg-\[url\(\/img\/mountains\.jpg\)\] {
-    background-image: url(/img/mountains.jpg);
   }
   .object-center {
     object-position: center;
@@ -475,9 +463,6 @@
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
-  .py-0 {
-    padding-block: 0px;
-  }
   .py-0\.5 {
     padding-block: calc(var(--spacing) * 0.5);
   }
@@ -489,6 +474,9 @@
   }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
+  }
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
   }
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
@@ -546,9 +534,6 @@
   .text-\[\#00ffff\] {
     color: #00ffff;
   }
-  .text-\[\#00fffff\] {
-    color: #00fffff;
-  }
   .text-\[\#4a4a4a\] {
     color: #4a4a4a;
   }
@@ -576,24 +561,11 @@
   .uppercase {
     text-transform: uppercase;
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .decoration-1 {
     text-decoration-thickness: 1px;
   }
-  .decoration-2 {
-    text-decoration-thickness: 2px;
-  }
   .underline-offset-2 {
     text-underline-offset: 2px;
-  }
-  .underline-offset-4 {
-    text-underline-offset: 4px;
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .duration-150 {
     --tw-duration: 150ms;
@@ -618,12 +590,12 @@
     .group-hover\:scale-\[1\.1\]:is(:where(.group):hover *) {
       scale: 1.1;
     }
-    .group-hover\:bg-black\/40:is(:where(.group):hover *) {
-      background-color: color-mix(in srgb, #000 40%, transparent);
+    .group-hover\:bg-black\/80:is(:where(.group):hover *) {
+      background-color: color-mix(in srgb, #000 80%, transparent);
     }
     @supports (color: color-mix(in lab, red, red)) {
-      .group-hover\:bg-black\/40:is(:where(.group):hover *) {
-        background-color: color-mix(in oklab, var(--color-black) 40%, transparent);
+      .group-hover\:bg-black\/80:is(:where(.group):hover *) {
+        background-color: color-mix(in oklab, var(--color-black) 80%, transparent);
       }
     }
     .group-hover\:text-\[\#00ffff\]:is(:where(.group):hover *) {
@@ -643,9 +615,6 @@
     }
     .hover\:underline:hover {
       text-decoration-line: underline;
-    }
-    .hover\:underline-offset-2:hover {
-      text-underline-offset: 2px;
     }
     .hover\:outline:hover {
       outline-style: var(--tw-outline-style);
@@ -993,6 +962,7 @@
     }
   }
   .genre-card-section {
+    margin-bottom: calc(var(--spacing) * 10);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1040,19 +1010,25 @@
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
     color: #e0e0e0;
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, #000 40%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-black) 40%, transparent);
-        }
-      }
-    }
   }
   .genre-card-section .genre-card-overlay {
     position: absolute;
     height: 100%;
     width: 100%;
+  }
+  .genre-movies-section {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: calc(var(--spacing) * 4);
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (width >= 80rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
   }
 }
 @property --tw-rotate-x {
@@ -1084,11 +1060,6 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -1101,6 +1072,11 @@
   syntax: "*";
   initial-value: "";
   inherits: false;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-translate-x {
   syntax: "*";
@@ -1127,10 +1103,10 @@
       --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
       --tw-duration: initial;
       --tw-ease: initial;
       --tw-content: "";
+      --tw-outline-style: solid;
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Genre Page</title>
+    <link rel="stylesheet" href="./src/css/customStyle.css" />
+    <link rel="stylesheet" href="./src/css/output.css" />
+    <script
+      src="https://kit.fontawesome.com/cccffbd662.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-[#0A0A0A] pt-20">
+    <header class="w-full bg-[#2A2A3A] fixed top-0 z-50 h-20">
+      <div
+        class="header-item flex justify-between items-center px-2 sm:px-4 lg:px-8 py-4 max-w-[1440px] w-full mx-auto z-50"
+      >
+        <!-- title -->
+        <h1 class="text-[#00ffff] font-extrabold sm:text-xl text-sm mr-4">
+          MOVIE <span class="text-[#00ff00]">FINDER</span>
+        </h1>
+
+        <div
+          class="head-movie-title text-[#e0e0e0] font-extrabold text-sm sm:text-3xl lg:text-4xl w-full mx-auto text-center truncate"
+        ></div>
+        <!-- icons -->
+        <div
+          class="icons nav-icons flex ml-4 gap-4 justify-center items-center"
+        >
+          <div class="toggle icon">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+          </div>
+          <div class="user icon">
+            <i class="fa-solid fa-circle-user"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="max-w-[1440px] w-full mx-auto px-4 md:px-8 lg:px-12 h-full relative pt-10"
+    >
+      <section class="card-section genre-movies-section"></section>
+    </main>
+    <script type="module" src="./src/js/genre-page.js"></script>
+  </body>
+</html>

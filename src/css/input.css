@@ -76,13 +76,17 @@
   }
 
   .genre-card-section {
-    @apply flex justify-center items-center flex-col gap-4 sm:grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 md:gap-10 lg:gap-8 xl:gap-6;
+    @apply flex justify-center items-center flex-col gap-4 sm:grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 md:gap-10 lg:gap-8 xl:gap-6 mb-10;
   }
 
   .genre-card-section .genre-card {
-    @apply w-[200px] h-[250px] rounded-md bg-[#1a1a1a] border border-[#4a4a4a] cursor-pointer flex flex-col justify-center items-center font-bold text-[#e0e0e0] text-xl relative overflow-hidden hover:bg-black/40;
+    @apply w-[200px] h-[250px] rounded-md bg-[#1a1a1a] border border-[#4a4a4a] cursor-pointer flex flex-col justify-center items-center font-bold text-[#e0e0e0] text-xl relative overflow-hidden;
   }
   .genre-card-section .genre-card-overlay {
     @apply absolute w-full h-full;
+  }
+
+  .genre-movies-section {
+    @apply grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4;
   }
 }

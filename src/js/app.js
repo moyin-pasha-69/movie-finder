@@ -163,4 +163,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  //genre section
+  Ui.renderGenreCards();
 });

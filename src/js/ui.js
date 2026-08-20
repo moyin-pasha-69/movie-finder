@@ -1,9 +1,11 @@
 import * as Api from "./api.js";
 import * as Utils from "./utils.js";
 import * as Config from "./config.js";
+import * as Storage from "./storage.js";
 export const heroSection = document.querySelector(".hero-section");
 export const slides = document.querySelector(".slides");
 export const trendingCard = document.querySelector(".slider-wrapper div");
+const genreCardSection = document.querySelector(".genre-card-section");
 
 export function renderHeroSection(data) {
   data.forEach((element, index) => {
@@ -119,5 +121,31 @@ export function renderTrendingMovies(movie) {
   
   `;
     trendingCard.appendChild(card);
+  });
+}
+
+export function renderGenreCards() {
+  Storage.MovieGenreList.forEach((element, index) => {
+    let card = document.createElement("a");
+    card.setAttribute("href", `../genre-page.html?id=${element.id}`);
+    card.className = "genre-card group";
+    card.innerHTML = `
+    <p class="z-30">${element.name}</p>
+            <a
+              href="../genre-page.html?id=${element.id}"
+              class="hidden text-sm font-medium group-hover:flex justify-center items-center text-[#00ffff] decoration-1 hover:underline underline-offset-2 z-30"
+              >Explore Movies →</a
+            >
+            <img
+              src="..//assets/genre-img/genre-${index}.png"
+              class="w-full h-full absolute inset-0 z-0"
+              alt=""
+            />
+            <div
+              class="bg-black/50 w-full h-full absolute inset-0 group-hover:bg-black/80"
+            ></div>
+    
+   `;
+    genreCardSection.appendChild(card);
   });
 }

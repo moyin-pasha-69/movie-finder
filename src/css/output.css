@@ -479,10 +479,6 @@
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
-  .text-4xl {
-    font-size: var(--text-4xl);
-    line-height: var(--tw-leading, var(--text-4xl--line-height));
-  }
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -519,9 +515,6 @@
   .text-\[\#00ffff\] {
     color: #00ffff;
   }
-  .text-\[\#3a3a3a\] {
-    color: #3a3a3a;
-  }
   .text-\[\#4a4a4a\] {
     color: #4a4a4a;
   }
@@ -542,9 +535,6 @@
   }
   .text-gray-500 {
     color: var(--color-gray-500);
-  }
-  .text-red-500 {
-    color: var(--color-red-500);
   }
   .text-white {
     color: var(--color-white);

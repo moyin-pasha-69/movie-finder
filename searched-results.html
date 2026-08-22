@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/css/customStyle.css" />
+    <link rel="stylesheet" href="./src/css/output.css" />
+    <script
+      src="https://kit.fontawesome.com/cccffbd662.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="w-full bg-[#2A2A3A] fixed top-0 z-50 h-20">
+      <div
+        class="header-item flex justify-between items-center px-2 sm:px-4 lg:px-8 py-4 max-w-[1440px] w-full mx-auto z-50"
+      >
+        <!-- title -->
+        <h1 class="text-[#00ffff] font-extrabold sm:text-xl text-sm">
+          MOVIE <span class="text-[#00ff00]">FINDER</span>
+        </h1>
+
+        <!-- search bar -->
+        <form
+          action=""
+          method="get"
+          class="search-bar bg-[#0a0a0a] rounded-full max-w-md mx-auto w-full py-1 px-1 pl-2 text-white flex items-center [&:has(input:focus)]:outline-[#00ffff] [&:has(input:focus)]:outline-1"
+        >
+          <input
+            type="text"
+            name="search-input"
+            id="search-input"
+            placeholder="Search movies,actors,directors..."
+            class="seach w-full outline-none border-none mx-2 group"
+          />
+          <button
+            type="submit"
+            class="search-btn bg-[#00ffff] text-[#0a0a0a] rounded-3xl sm:px-8 px-2 sm:py-2 py-1 font-bold sm:text-base text-xs hover:bg-[#00ff00] cursor-pointer"
+          >
+            Search
+          </button>
+        </form>
+
+        <!-- nav items -->
+        <nav class="flex">
+          <!-- bars -->
+          <div class="icons lg:hidden" id="menu-bar">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+
+          <!-- navbar -->
+          <ul
+            class="hidden nav-items lg:flex justify-around items-center gap-4 uppercase"
+          >
+            <li class="nav-item"><a href="#home">Home</a></li>
+            <li class="nav-item"><a href="#trending">Trending</a></li>
+            <li class="nav-item"><a href="#genre">Genre</a></li>
+          </ul>
+
+          <!-- icons -->
+          <div
+            class="icons nav-icons hidden lg:flex ml-4 gap-4 justify-center items-center"
+          >
+            <div class="toggle icon">
+              <i class="fa-solid fa-circle-half-stroke"></i>
+            </div>
+            <div class="user icon">
+              <i class="fa-solid fa-circle-user"></i>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <script type="module" src="./src/js/search-results.js"></script>
+  </body>
+</html>

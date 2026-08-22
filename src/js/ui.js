@@ -2,10 +2,15 @@ import * as Api from "./api.js";
 import * as Utils from "./utils.js";
 import * as Config from "./config.js";
 import * as Storage from "./storage.js";
+
+export const main = document.querySelector("main");
 export const heroSection = document.querySelector(".hero-section");
+export const trendingSection = document.querySelector(".trending-section");
+export const genreSection = document.querySelector(".genre-section");
 export const slides = document.querySelector(".slides");
 export const trendingCard = document.querySelector(".slider-wrapper div");
 const genreCardSection = document.querySelector(".genre-card-section");
+export const searchResults = document.querySelector(".search-results");
 
 export function renderHeroSection(data) {
   data.forEach((element, index) => {
@@ -148,4 +153,79 @@ export function renderGenreCards() {
    `;
     genreCardSection.appendChild(card);
   });
+}
+
+export async function renderSearchedMovieByName(movie) {
+  heroSection.classList.add("hidden");
+  trendingSection.classList.add("hidden");
+  genreSection.classList.add("hidden");
+  searchResults.classList.remove("hidden");
+  searchResults.innerHTML = "";
+  let res = await Api.getSearchedMovieByName(movie);
+  const data = await Promise.all(
+    res.results.map((movie) => Api.getSearchedMovie(movie.id)),
+  );
+
+  //show movies
+
+  data.forEach((details, index) => {
+    let overview = details.overview;
+    if (overview === "") {
+      overview = "This movie not have any overview";
+    }
+    let genre = Utils.getMovieGenre(details.genres);
+
+    let releaseDate = new Date(details.release_date).getFullYear();
+    let rating = details.vote_average.toFixed(1);
+
+    let card = document.createElement("a");
+    card.setAttribute("href", `../movie.html?id=${details.id}`);
+    card.classList.add("cursor-grab");
+
+    card.innerHTML = `
+      <div class="card-box bg-[#1A1A1A] w-full  group border-2 border-[#4a4a4a] rounded-xl overflow-hidden duration-150 ease-linear hover:border-[#00ffff]">
+            <div class="overflow-hidden border-[#4a4a4a] border-b w-full h-[320px] relative">
+              <!-- card image -->
+              <img
+                src= "${Api.getImage(details.poster_path)}"
+                class="w-full group-hover:scale-[1.1] duration-300 ease-linear h-full object-center"
+              />
+              <div class="absolute top-2 right-1 bg-[#0D0D0F] px-1 py-0.5 rounded-md border border-[#4A4A4A]"><span class="text-[#ffff00] text-sm font-bold">
+              &starf; ${rating}/10
+              </span></div>
+            </div>
+
+            <!-- card details -->
+            <div class="px-6 text-white pt-4 pb-4 relative">
+              <h2 class="text-lg truncate group-hover:text-[#00ffff] duration-300 ease-linear mb-2 font-bold cursor-default" title="${details.title}">
+                ${details.title}
+              </h2>
+
+              <span class="absolute top-0.5 right-3 text-[#00ff00] font-bold">${releaseDate}</span>
+
+              <p class="text-sm h-10  overflow-y-scroll text-gray-400 mb-4">
+               ${overview}
+              </p>
+
+              <hr class="text-[#4a4a4a] rounded-2xl mb-3" />
+              <div class="flex justify-between items-center text-sm">
+                <p class="text-gray-500">${genre[0]} / ${genre[1]}</p>
+                <a href="../movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
+                  Details &rarr;</a
+                >
+              </div>
+            </div>
+          </div>
+  
+  `;
+    searchResults.appendChild(card);
+  });
+}
+
+export function showOgSections() {
+  heroSection.classList.remove("hidden");
+  trendingSection.classList.remove("hidden");
+  genreSection.classList.remove("hidden");
+  searchResults.classList.add("hidden");
+  searchResults.innerHTML = "";
 }

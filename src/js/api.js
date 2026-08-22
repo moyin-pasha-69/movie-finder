@@ -78,3 +78,27 @@ export async function getMovieByGenre(id, page) {
     console.log(error);
   }
 }
+
+export async function getSearchedMovieByName(movie) {
+  try {
+    const response = await fetch(
+      `${Config.BASE_URL}search/movie?query=${encodeURIComponent(movie)}&page=${1}`,
+      Config.OPTIONS,
+    );
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getMovieByName(id) {
+  try {
+    const response = await fetch(
+      `${Config.BASE_URL}discover/movie?with_genres=${id}`,
+      Config.OPTIONS,
+    );
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}

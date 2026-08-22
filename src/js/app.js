@@ -166,4 +166,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //genre section
   Ui.renderGenreCards();
+
+  //search section
+  const searchBar = document.querySelector(".search-bar");
+  const searchBtn = document.querySelector(".search-btn");
+  let searchInput = document.getElementById("search-input");
+  searchBar.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let search = searchInput.value.trim();
+    if (search === "") {
+      Ui.showOgSections();
+    } else {
+      Ui.renderSearchedMovieByName(search);
+    }
+  });
+
+  searchInput.addEventListener("input", () => {
+    if (searchInput.value.trim() === "") {
+      Ui.showOgSections();
+    }
+  });
 });

@@ -111,4 +111,7 @@
   .disable-btn {
     @apply text-[#2a2a2a] bg-[#3a3a3a] cursor-no-drop rounded-md p-2   duration-200;
   }
+  .search-results {
+    @apply grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-10;
+  }
 }

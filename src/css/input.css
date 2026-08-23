@@ -9,7 +9,7 @@
     @apply fixed right-0 top-20 bg-[#1A1A1A] w-full  flex flex-col py-2;
   }
   .side-bar-icons {
-    @apply fixed right-0 top-[220px] py-2  bg-[#1A1A1A] w-full  flex justify-center items-center gap-4;
+    @apply fixed right-0 top-[80px] py-2  bg-[#1A1A1A] w-full  flex justify-center items-center gap-4;
   }
 
   .icons i {

@@ -131,7 +131,8 @@ async function renderMovieCards() {
     let releaseDate = new Date(details.release_date).getFullYear();
     let rating = details.vote_average.toFixed(1);
 
-    let card = document.createElement("div");
+    let card = document.createElement("a");
+    card.setAttribute("href", `./movie.html?id=${details.id}`);
     card.classList.add("cursor-grab");
 
     card.innerHTML = `
@@ -162,7 +163,7 @@ async function renderMovieCards() {
                   <hr class="text-[#4a4a4a] rounded-2xl mb-3" />
                   <div class="flex justify-between items-center text-sm">
                     <p class="text-gray-500">${genre[0]} / ${genre[1]}</p>
-                    <a href="../movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
+                    <a href="./movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
                       Details &rarr;</a
                     >
                   </div>

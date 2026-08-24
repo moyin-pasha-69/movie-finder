@@ -1100,6 +1100,7 @@
     transition-duration: 200ms;
   }
   .search-results {
+    margin-top: calc(var(--spacing) * 10);
     margin-bottom: calc(var(--spacing) * 10);
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));

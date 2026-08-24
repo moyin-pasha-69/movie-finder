@@ -62,7 +62,7 @@ export function renderHeroSection(data) {
 
             <!-- trailer -->
             <div class="hero-trailer">
-              <a href="../trailer.html?id=${element.id}">&#9655; Watch Trailer</a>
+              <a href="../src/pages/trailer.html?id=${element.id}">&#9655; Watch Trailer</a>
               <button
                 class="bg-[#2A2A3A] hover:outline-[#00ffff] hover:outline text-white"
               >
@@ -86,7 +86,9 @@ export function renderTrendingMovies(movie) {
     let releaseDate = new Date(details.release_date).getFullYear();
     let rating = details.vote_average.toFixed(1);
 
-    let card = document.createElement("div");
+    let card = document.createElement("a");
+    card.classList.add("cursor-grab");
+    card.setAttribute("href", `../src/pages/movie.html?id=${details.id}`);
     card.setAttribute("class", "swiper-slide");
 
     card.innerHTML = `
@@ -117,7 +119,7 @@ export function renderTrendingMovies(movie) {
               <hr class="text-[#4a4a4a] rounded-2xl mb-3" />
               <div class="flex justify-between items-center text-sm">
                 <p class="text-gray-500">${genre[0]} / ${genre[1]}</p>
-                <a href="../movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
+                <a href="../src/pages/movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
                   Details &rarr;</a
                 >
               </div>
@@ -132,12 +134,12 @@ export function renderTrendingMovies(movie) {
 export function renderGenreCards() {
   Storage.MovieGenreList.forEach((element, index) => {
     let card = document.createElement("a");
-    card.setAttribute("href", `../genre-page.html?id=${element.id}`);
+    card.setAttribute("href", `./src/pages/genre-page.html?id=${element.id}`);
     card.className = "genre-card group";
     card.innerHTML = `
     <p class="z-30">${element.name}</p>
             <a
-              href="../genre-page.html?id=${element.id}"
+              href="./src/pages/genre-page.html?id=${element.id}"
               class="hidden text-sm font-medium group-hover:flex justify-center items-center text-[#00ffff] decoration-1 hover:underline underline-offset-2 z-30"
               >Explore Movies →</a
             >

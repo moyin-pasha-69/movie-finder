@@ -92,15 +92,19 @@ genre.forEach((gen) => {
 let castItems = document.querySelector(".cast-items");
 const castInfo = await Api.getMovieCast(data.id);
 let d = castInfo.cast.slice(0, 10);
-// console.log(d);
+console.log(d);
 
 d.forEach((element) => {
   let cast = document.createElement("div");
   cast.setAttribute("class", "flex flex-col items-center ");
+  let picture = Api.getImage(element.profile_path);
+  if (picture === "nothing") {
+    picture = "/assets/default-img/default-cast.png";
+  }
   cast.innerHTML = `
             <a>
             <img
-              src="${Api.getImage(element.profile_path)}"
+              src="${picture}"
               alt=""
               class="object-center w-40 h-40 rounded-full"
             />

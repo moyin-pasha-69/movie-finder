@@ -2,8 +2,7 @@ import * as Api from "./api.js";
 import * as Utils from "./utils.js";
 import * as Config from "./config.js";
 import * as Storage from "./storage.js";
-import { loader } from "./app.js";
-
+const loader = document.querySelector(".loader");
 export const main = document.querySelector("main");
 export const heroSection = document.querySelector(".hero-section");
 export const trendingSection = document.querySelector(".trending-section");
@@ -90,7 +89,7 @@ export function renderTrendingMovies(movie) {
 
     let card = document.createElement("a");
     card.classList.add("cursor-grab");
-    card.setAttribute("href", `../src/pages/movie.html?id=${details.id}`);
+    card.setAttribute("href", `./src/pages/movie.html?id=${details.id}`);
     card.setAttribute("class", "swiper-slide");
 
     card.innerHTML = `
@@ -121,7 +120,7 @@ export function renderTrendingMovies(movie) {
               <hr class="text-[#4a4a4a] rounded-2xl mb-3" />
               <div class="flex justify-between items-center text-sm">
                 <p class="text-gray-500">${genre[0]} / ${genre[1]}</p>
-                <a href="../src/pages/movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
+                <a href="./src/pages/movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
                   Details &rarr;</a
                 >
               </div>

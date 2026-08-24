@@ -2,7 +2,7 @@ import * as Api from "./api.js";
 import * as Utils from "./utils.js";
 import * as Ui from "./ui.js";
 
-const menuBar = document.getElementById("menu-bar");
+export const menuBar = document.getElementById("menu-bar");
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 const slideOne = document.querySelector(".slide1");

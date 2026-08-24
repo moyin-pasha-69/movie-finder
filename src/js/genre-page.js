@@ -3,6 +3,8 @@ import * as Utils from "./utils.js";
 import * as Storage from "./storage.js";
 
 const cardSection = document.querySelector(".card-section");
+const loader = document.querySelector(".loader");
+const footer = document.querySelector("footer");
 
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get("id");
@@ -15,6 +17,8 @@ headMovieTitle.innerHTML = `${Utils.getMovieGenreTitle(movieId)}`;
 let data = await Api.getMovieByGenre(movieId, 1);
 
 //pagination
+loader.classList.remove("hidden");
+footer.classList.add("hidden");
 const genrePages = document.querySelector(".genre-page-pagination-section");
 let totalPages = data.total_pages;
 let currentPage = 1;
@@ -46,6 +50,8 @@ page.forEach((element) => {
 
 makeDisableBtn();
 changePaginationColor();
+loader.classList.remove("hidden");
+footer.classList.add("hidden");
 giveMovieData(currentPage);
 function pages() {
   let page = "";
@@ -66,6 +72,8 @@ function nextPage() {
     currentPage++;
     makeDisableBtn();
     changePaginationColor();
+    loader.classList.remove("hidden");
+    footer.classList.add("hidden");
     giveMovieData(currentPage);
   }
 }
@@ -78,6 +86,8 @@ function prevPage() {
     currentPage--;
     makeDisableBtn();
     changePaginationColor();
+    loader.classList.remove("hidden");
+    footer.classList.add("hidden");
     giveMovieData(currentPage);
   }
 }
@@ -108,10 +118,14 @@ function clickedPage(id) {
   currentPage = Number(demo[1]);
   changePaginationColor();
   makeDisableBtn();
+  loader.classList.remove("hidden");
+  footer.classList.add("hidden");
   giveMovieData(currentPage);
 }
 async function giveMovieData(page) {
   data = await Api.getMovieByGenre(movieId, page);
+  loader.classList.remove("hidden");
+  footer.classList.add("hidden");
   renderMovieCards();
 }
 //render movie  cards
@@ -120,6 +134,8 @@ async function renderMovieCards() {
   const movie = await Promise.all(
     data.results.map((element) => Api.getSearchedMovie(element.id)),
   );
+  loader.classList.add("hidden");
+  footer.classList.remove("hidden");
   movie.forEach((details) => {
     let overview = details.overview;
     if (overview === "") {

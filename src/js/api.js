@@ -26,6 +26,12 @@ export async function getSearchedMovie(movie) {
 }
 
 export function getImage(path) {
+  if (path === null) {
+    return "nothing";
+  }
+
+  // console.log(path);
+
   return `${Config.BASE_IMG_URL}/original/${path}`;
 }
 

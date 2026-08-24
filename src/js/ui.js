@@ -2,6 +2,7 @@ import * as Api from "./api.js";
 import * as Utils from "./utils.js";
 import * as Config from "./config.js";
 import * as Storage from "./storage.js";
+import { loader } from "./app.js";
 
 export const main = document.querySelector("main");
 export const heroSection = document.querySelector(".hero-section");
@@ -11,6 +12,7 @@ export const slides = document.querySelector(".slides");
 export const trendingCard = document.querySelector(".slider-wrapper div");
 const genreCardSection = document.querySelector(".genre-card-section");
 export const searchResults = document.querySelector(".search-results");
+export const footer = document.querySelector("footer");
 
 export function renderHeroSection(data) {
   data.forEach((element, index) => {
@@ -161,6 +163,7 @@ export async function renderSearchedMovieByName(movie) {
   heroSection.classList.add("hidden");
   trendingSection.classList.add("hidden");
   genreSection.classList.add("hidden");
+  footer.classList.add("hidden");
   searchResults.classList.remove("hidden");
   searchResults.innerHTML = "";
   let res = await Api.getSearchedMovieByName(movie);
@@ -169,7 +172,7 @@ export async function renderSearchedMovieByName(movie) {
   );
 
   //show movies
-
+  loader.classList.add("hidden");
   data.forEach((details, index) => {
     let overview = details.overview;
     if (overview === "") {
@@ -181,7 +184,7 @@ export async function renderSearchedMovieByName(movie) {
     let rating = details.vote_average.toFixed(1);
 
     let card = document.createElement("a");
-    card.setAttribute("href", `../movie.html?id=${details.id}`);
+    card.setAttribute("href", `./src/pages/movie.html?id=${details.id}`);
     card.classList.add("cursor-grab");
 
     card.innerHTML = `
@@ -212,7 +215,7 @@ export async function renderSearchedMovieByName(movie) {
               <hr class="text-[#4a4a4a] rounded-2xl mb-3" />
               <div class="flex justify-between items-center text-sm">
                 <p class="text-gray-500">${genre[0]} / ${genre[1]}</p>
-                <a href="../movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
+                <a href="./src/pages/movie.html?id=${details.id}" class="text-[#00ffff] font-bold hover:underline">
                   Details &rarr;</a
                 >
               </div>
@@ -220,8 +223,10 @@ export async function renderSearchedMovieByName(movie) {
           </div>
   
   `;
+
     searchResults.appendChild(card);
   });
+  footer.classList.remove("hidden");
 }
 
 export function showOgSections() {

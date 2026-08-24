@@ -10,6 +10,7 @@ const slideTwo = document.querySelector(".slide2");
 const slideThree = document.querySelector(".slide3");
 const slideFour = document.querySelector(".slide4");
 const swiperContainer = document.querySelector(".swiper");
+export const loader = document.querySelector(".loader");
 
 let slide = 0;
 
@@ -177,6 +178,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (search === "") {
       Ui.showOgSections();
     } else {
+      loader.classList.remove("hidden");
       Ui.renderSearchedMovieByName(search);
     }
   });

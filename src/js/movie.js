@@ -9,8 +9,6 @@ const detailBox = document.querySelector("#detail-page .slides");
 const pageTitle = document.querySelector("title");
 pageTitle.innerHTML = `${data.original_title} - Detail page`;
 
-// console.log(data);
-
 // head title
 const h2 = document.createElement("h2");
 h2.classList.add("cursor-default");

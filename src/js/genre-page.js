@@ -150,13 +150,17 @@ async function renderMovieCards() {
     let card = document.createElement("a");
     card.setAttribute("href", `./movie.html?id=${details.id}`);
     card.classList.add("cursor-grab");
+    let poster =
+      details.poster_path === null
+        ? "/assets/default-img/default-poster.png"
+        : Api.getImage(details.poster_path);
 
     card.innerHTML = `
           <div class="card-box bg-[#1A1A1A] w-full  group border-2 border-[#4a4a4a] rounded-xl overflow-hidden duration-150 ease-linear hover:border-[#00ffff]">
                 <div class="overflow-hidden border-[#4a4a4a] border-b w-full h-[320px] relative">
                   <!-- card image -->
                   <img
-                    src= "${Api.getImage(details.poster_path)}"
+                    src= "${poster}"
                     class="w-full group-hover:scale-[1.1] duration-300 ease-linear h-full object-center"
                   />
                   <div class="absolute top-2 right-1 bg-[#0D0D0F] px-1 py-0.5 rounded-md border border-[#4A4A4A]"><span class="text-[#ffff00] text-sm font-bold">

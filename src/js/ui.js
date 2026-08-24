@@ -16,12 +16,18 @@ export const footer = document.querySelector("footer");
 export function renderHeroSection(data) {
   data.forEach((element, index) => {
     // let movie = await Api.getSearchedMovie(element.id);
-    let poster = Api.getImage(element.poster_path);
-    let backdrop = Api.getImage(element.backdrop_path);
     // let genre = Utils.getMovieGenre(movie.genres);
     let releaseDate = new Date(element.release_date).getFullYear();
     let rating = element.vote_average.toFixed(1);
 
+    let poster =
+      element.poster_path === null
+        ? "/assets/default-img/default-poster.png"
+        : Api.getImage(element.poster_path);
+    let backdrop =
+      element.poster_path === null
+        ? "/assets/default-img/default-poster.png"
+        : Api.getImage(element.backdrop_path);
     let hero = document.createElement("div");
     hero.classList.add("hero-box");
     hero.style.backgroundImage = `url(${backdrop})`;
@@ -92,12 +98,17 @@ export function renderTrendingMovies(movie) {
     card.setAttribute("href", `./src/pages/movie.html?id=${details.id}`);
     card.setAttribute("class", "swiper-slide");
 
+    let poster =
+      details.poster_path === null
+        ? "/assets/default-img/default-poster.png"
+        : Api.getImage(details.poster_path);
+
     card.innerHTML = `
       <div class="card-box bg-[#1A1A1A] w-full  group border-2 border-[#4a4a4a] rounded-xl overflow-hidden duration-150 ease-linear hover:border-[#00ffff]">
             <div class="overflow-hidden border-[#4a4a4a] border-b w-full h-[320px] relative">
               <!-- card image -->
               <img
-                src= "${Api.getImage(details.poster_path)}"
+                src= "${poster}"
                 class="w-full group-hover:scale-[1.1] duration-300 ease-linear h-full object-center"
               />
               <div class="absolute top-2 right-1 bg-[#0D0D0F] px-1 py-0.5 rounded-md border border-[#4A4A4A]"><span class="text-[#ffff00] text-sm font-bold">

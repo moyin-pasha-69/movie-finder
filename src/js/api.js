@@ -26,9 +26,9 @@ export async function getSearchedMovie(movie) {
 }
 
 export function getImage(path) {
-  if (path === null) {
-    return "nothing";
-  }
+  // if (path === null) {
+  //   return "nothing";
+  // }
 
   // console.log(path);
 

@@ -18,13 +18,19 @@ headMovieTitle.appendChild(h2);
 
 //movie card
 console.log(data);
-
-let backdrop = Api.getImage(data.backdrop_path);
-let poster = Api.getImage(data.poster_path);
 let releaseDate = new Date(data.release_date).getFullYear();
 let rating = data.vote_average.toFixed(1);
 let ratingData = rating === "0.0" ? "Not released" : `&starf; ${rating} / 10`;
 
+let poster =
+  data.poster_path === null
+    ? "/assets/default-img/default-poster.png"
+    : Api.getImage(data.poster_path);
+
+let backdrop =
+  data.poster_path === null
+    ? "/assets/default-img/default-poster.png"
+    : Api.getImage(data.backdrop_path);
 let status = data.status.toUpperCase();
 let hero = document.createElement("div");
 hero.classList.add("hero-box");
@@ -92,16 +98,20 @@ genre.forEach((gen) => {
 let castItems = document.querySelector(".cast-items");
 const castInfo = await Api.getMovieCast(data.id);
 let d = castInfo.cast.slice(0, 10);
-console.log(d);
+console.log(castInfo);
+if (castInfo.cast.length === 0) {
+  castItems.setAttribute("class", "text-center text-[#e0e0e0]");
+  castItems.innerHTML = "No Data Found..";
+} else {
+  d.forEach((element) => {
+    let cast = document.createElement("div");
+    cast.setAttribute("class", "flex flex-col items-center ");
+    let picture =
+      element.profile_path === null
+        ? "/assets/default-img/default-cast.png"
+        : Api.getImage(element.profile_path);
 
-d.forEach((element) => {
-  let cast = document.createElement("div");
-  cast.setAttribute("class", "flex flex-col items-center ");
-  let picture = Api.getImage(element.profile_path);
-  if (picture === "nothing") {
-    picture = "/assets/default-img/default-cast.png";
-  }
-  cast.innerHTML = `
+    cast.innerHTML = `
             <a>
             <img
               src="${picture}"
@@ -114,8 +124,9 @@ d.forEach((element) => {
               <h4 class="text-[#e0e0e0] text-xs">${element.character}</h4>
             </div>
   `;
-  castItems.appendChild(cast);
-});
+    castItems.appendChild(cast);
+  });
+}
 
 //Related movie section
 const relatedMovieCard = document.querySelector(".related-movie-card");
@@ -138,13 +149,17 @@ relatedMovieData.forEach((details) => {
   let card = document.createElement("a");
   card.setAttribute("href", `./movie.html?id=${details.id}`);
   card.setAttribute("class", "swiper-slide");
+  let poster =
+    details.poster_path == null
+      ? "/assets/default-img/default-poster.png"
+      : Api.getImage(details.poster_path);
 
   card.innerHTML = `
         <div class="card-box bg-[#1A1A1A] w-full  group border-2 border-[#4a4a4a] rounded-xl overflow-hidden duration-150 ease-linear hover:border-[#00ffff]">
               <div class="overflow-hidden border-[#4a4a4a] border-b w-full h-[320px] relative">
                 <!-- card image -->
                 <img
-                  src= "${Api.getImage(details.poster_path)}"
+                  src= "${poster}"
                   class="w-full group-hover:scale-[1.1] duration-300 ease-linear h-full object-center"
                 />
                 <div class="absolute top-2 right-1 bg-[#0D0D0F] px-1 py-0.5 rounded-md border border-[#4A4A4A]"><span class="text-[#ffff00] text-sm font-bold">

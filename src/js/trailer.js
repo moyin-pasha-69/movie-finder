@@ -30,7 +30,6 @@ if (isEmpty) {
       video.type === "Trailer" &&
       video.official === true,
   );
-  console.log(trailer);
 
   let trailerData = trailer.key === " ";
 
@@ -40,6 +39,7 @@ if (isEmpty) {
         src="https://www.youtube.com/embed/${trailer.key}"
         frameborder="0"
         allowfullscreen
+        allow="autoplay; encrypted-media" 
         class="w-full h-full"
       ></iframe>
 `;

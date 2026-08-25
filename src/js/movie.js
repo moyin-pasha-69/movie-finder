@@ -108,7 +108,7 @@ if (castInfo.cast.length === 0) {
     cast.setAttribute("class", "flex flex-col items-center ");
     let picture =
       element.profile_path === null
-        ? "/assets/default-img/default-cast.png"
+        ? "../../assets/default-img/default-cast.png"
         : Api.getImage(element.profile_path);
 
     cast.innerHTML = `

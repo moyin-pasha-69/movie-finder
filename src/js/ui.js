@@ -156,7 +156,7 @@ export function renderGenreCards() {
               >Explore Movies →</a
             >
             <img
-              src="/assets/genre-img/genre-${index}.png"
+              src="./assets/genre-img/genre-${index}.png""
               class="w-full h-full absolute inset-0 z-0"
               alt=""
             />

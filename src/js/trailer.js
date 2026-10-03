@@ -4,8 +4,10 @@ const pageTitle = document.querySelector("title");
 const headMovieTitle = document.querySelector(".head-movie-title");
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get("id");
+const favicon = document.querySelector("#site-favicon");
 const data = await Api.getSearchedMovie(movieId);
 pageTitle.innerHTML = `${data.original_title} - Official Trailer`;
+favicon.href = Api.getImage(data.poster_path);
 
 //head title
 const h2 = document.createElement("h2");

@@ -7,6 +7,9 @@ const data = await Api.getSearchedMovie(movieId);
 const headMovieTitle = document.querySelector(".head-movie-title");
 const detailBox = document.querySelector("#detail-page .slides");
 const pageTitle = document.querySelector("title");
+const favicon = document.getElementById("site-favicon");
+
+favicon.href = Api.getImage(data.poster_path);
 pageTitle.innerHTML = `${data.original_title} - Detail page`;
 
 // head title
@@ -17,7 +20,7 @@ h2.innerHTML = `${data.original_title}`;
 headMovieTitle.appendChild(h2);
 
 //movie card
-console.log(data);
+
 let releaseDate = new Date(data.release_date).getFullYear();
 let rating = data.vote_average.toFixed(1);
 let ratingData = rating === "0.0" ? "Not released" : `&starf; ${rating} / 10`;
@@ -98,7 +101,6 @@ genre.forEach((gen) => {
 let castItems = document.querySelector(".cast-items");
 const castInfo = await Api.getMovieCast(data.id);
 let d = castInfo.cast.slice(0, 10);
-console.log(castInfo);
 if (castInfo.cast.length === 0) {
   castItems.setAttribute("class", "text-center text-[#e0e0e0]");
   castItems.innerHTML = "No Data Found..";

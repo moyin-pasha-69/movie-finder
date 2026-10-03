@@ -5,6 +5,8 @@ import * as Storage from "./storage.js";
 const cardSection = document.querySelector(".card-section");
 const loader = document.querySelector(".loader");
 const footer = document.querySelector("footer");
+const favicon = document.getElementById("site-favicon");
+const pageTitle = document.querySelector("title");
 
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get("id");
@@ -12,6 +14,7 @@ const movieId = params.get("id");
 //head title
 const headMovieTitle = document.querySelector(".head-movie-title");
 headMovieTitle.innerHTML = `${Utils.getMovieGenreTitle(movieId)}`;
+pageTitle.innerHTML = `${Utils.getMovieGenreTitle(movieId)} - page`;
 
 //genre movies section
 let data = await Api.getMovieByGenre(movieId, 1);
@@ -58,7 +61,6 @@ function pages() {
   for (let i = 1; i <= totalPages; i++) {
     page += `<div id="page${i}" class="normal-pages">${i}</div>`;
   }
-  console.log("hello");
 
   return page;
 }

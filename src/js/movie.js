@@ -10,7 +10,6 @@ const pageTitle = document.querySelector("title");
 const favicon = document.getElementById("site-favicon");
 
 favicon.href = Api.getImage(data.poster_path);
-console.log(favicon.href);
 pageTitle.innerHTML = `${data.original_title} - Detail page`;
 
 // head title

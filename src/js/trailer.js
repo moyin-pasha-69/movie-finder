@@ -7,7 +7,10 @@ const movieId = params.get("id");
 const favicon = document.querySelector("#site-favicon");
 const data = await Api.getSearchedMovie(movieId);
 pageTitle.innerHTML = `${data.original_title} - Official Trailer`;
-favicon.href = Api.getImage(data.poster_path);
+favicon.href =
+  data.poster_path == undefined
+    ? "../../assets/default-img/default-poster.png"
+    : Api.getImage(data.poster_path);
 
 //head title
 const h2 = document.createElement("h2");

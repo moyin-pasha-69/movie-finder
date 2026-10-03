@@ -9,7 +9,10 @@ const detailBox = document.querySelector("#detail-page .slides");
 const pageTitle = document.querySelector("title");
 const favicon = document.getElementById("site-favicon");
 
-favicon.href = Api.getImage(data.poster_path);
+favicon.href =
+  data.poster_path == undefined
+    ? "../../assets/default-img/default-poster.png"
+    : Api.getImage(data.poster_path);
 pageTitle.innerHTML = `${data.original_title} - Detail page`;
 
 // head title
@@ -27,12 +30,12 @@ let ratingData = rating === "0.0" ? "Not released" : `&starf; ${rating} / 10`;
 
 let poster =
   data.poster_path === null
-    ? "/assets/default-img/default-poster.png"
+    ? "../../assets/default-img/default-poster.png"
     : Api.getImage(data.poster_path);
 
 let backdrop =
-  data.poster_path === null
-    ? "/assets/default-img/default-poster.png"
+  data.backdrop_path === null
+    ? "../../assets/default-img/default-banner.png"
     : Api.getImage(data.backdrop_path);
 let status = data.status.toUpperCase();
 let hero = document.createElement("div");
